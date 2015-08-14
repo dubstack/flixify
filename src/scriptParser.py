@@ -1,3 +1,4 @@
+from databaseHandler import writeToDb
 def main():
 	lines = [line.rstrip('\n') for line in open('../scripts/gladiator_transcript.txt')]
 	lines=lines[2:]
@@ -64,6 +65,6 @@ def main():
 				store.append({"type":"dialogue","speaker" : lastSpeaker, "content" : dialogue ,"scenenum":str(scenenum)})
 		else :
 			n_iter_ += 1
-	writeToDB(store)
+	writeToDb(store)
 if __name__ == '__main__':
 	main()
