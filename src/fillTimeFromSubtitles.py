@@ -5,7 +5,6 @@ import MySQLdb as mdb
 import MySQLdb.cursors as curs
 from subtitleParser import get_subtitle_list_from_file
 import difflib
-import copy
 
 def levenshtein(a,b):
     "Calculates the Levenshtein distance between a and b."
@@ -19,7 +18,7 @@ def levenshtein(a,b):
     for i in range(1,m+1):
         previous, current = current, [i]+[0]*n
         for j in range(1,n+1):
-            add, delete = previous[j]+1, current[j-1]
+            add, delete = previous[j]+1, current[j-1]+1
             change = previous[j-1]
             if a[j-1] != b[i-1]:
                 change = change + 1
@@ -29,6 +28,7 @@ def levenshtein(a,b):
 
 def tokenize(text):
     return [l for l in word_tokenize(text.lower()) if l != "-" and l!="."]
+
 def find_nearest_time(subtitle_list, dialogue_text):
     nearest_time = ""
     max_sim = 0.0
@@ -46,7 +46,7 @@ def find_nearest_time(subtitle_list, dialogue_text):
     return nearest_time
 
 def fill_dialogues_times():
-    # TODO[@gaurav] fix the sql syntax according to the update table syntax
+    # TODO[@9310gaurav] fix the sql syntax according to the update table syntax
     subtitle_list = get_subtitle_list_from_file("/Users/arkanath/Dropbox/IIT-Kgp_Coursework/NLP/Project/flixify/subtitles/gladiator.srt")
     db = mdb.connect(host="10.5.18.68", user="12CS30010", passwd="dual12", db="12CS30010", cursorclass=curs.DictCursor, charset='utf8')
     cur = db.cursor()
