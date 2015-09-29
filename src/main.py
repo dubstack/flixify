@@ -4,7 +4,7 @@ import get_vector
 
 
 def Main():
-	words_sub1_sub2=tokenize_narrative.main()
+	scripttolist=tokenize_narrative.main()
 	categories=6
 
 	numberofsubs=0
@@ -31,14 +31,21 @@ def Main():
 			X.append(Y)
 		matrix.append(X)
 
+	vectorable=0
+	nonvectorable=0
 	for I in scripttolist:
 		score=[]
 		for l in range(0,categories):
 			score.append(0.0)
 		for word in I[0]:
-			temp=get_vector.get_vector(word)
-			for l in range(0,categories):
-				score[l]+=temp[l]
+			try:
+				temp=get_vector.get_vector(word)
+				for l in range(0,categories):
+					score[l]+=temp[l]
+				vectorable+=1
+			except ValueError:
+				nonvectorable+=1
+
 		for l in range(0,categories):
 			matrix[sub[I[1]]][sub[I[2]]][l]=score[l]
 

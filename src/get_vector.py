@@ -21,6 +21,8 @@ def init_wn_synsets():
 def get_vector(word1):
     # print dog.lch_similarity(cat)
     # print dog.wup_similarity(cat)
+    print word1
+    
     dog = wn.synsets(word1)[0]
     ret = []
     for c in categories:
