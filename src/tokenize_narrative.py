@@ -45,14 +45,14 @@ def get_tokenized_screenifo(chars, data):
 				sent_tokens = [token for token in sent_tokens if token not in present_chars]
 				if len(present_chars) == 0:
 					if last_char1 != "":
-						final_data.append((last_char1,last_char2,sent_tokens))
+						final_data.append((sent_tokens,last_char1,last_char2))
 				elif len(present_chars) == 1:
 					if last_char1 != "":
-						final_data.append((present_chars[0],last_char1,sent_tokens))
+						final_data.append((sent_tokens,present_chars[0],last_char1))
 						last_char2 = last_char1
 						last_char1 = present_chars[0] 
 				else:
-					final_data.append((present_chars[0],present_chars[1],sent_tokens))
+					final_data.append((sent_tokens, present_chars[0],present_chars[1]))
 					last_char1 = present_chars[0]
 					last_char2 = present_chars[1]
 	return final_data
@@ -61,7 +61,5 @@ def main():
 	data = getData()
 	chars = get_all_chars(data)
 	tokenized_screeninfo =  get_tokenized_screenifo(chars,data)
-	print tokenized_screeninfo
+	return tokenized_screeninfo
 
-if __name__ == '__main__':
-	main()

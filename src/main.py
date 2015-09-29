@@ -1,15 +1,11 @@
-def scripttolist(location):
-
-
-
-def word2vec(word):
+import tokenize_narrative
+import get_vector
 
 
 
 def Main():
-	location=""
-	words_sub1_sub2=scripttolist(location)
-	categories=5
+	words_sub1_sub2=tokenize_narrative.main()
+	categories=6
 
 	numberofsubs=0
 	sub={}
@@ -40,13 +36,15 @@ def Main():
 		for l in range(0,categories):
 			score.append(0.0)
 		for word in I[0]:
-			temp=word2vec(word)
+			temp=get_vector.get_vector(word)
 			for l in range(0,categories):
 				score[l]+=temp[l]
 		for l in range(0,categories):
 			matrix[sub[I[1]]][sub[I[2]]][l]=score[l]
 
-	
+if __name__ == "__main__":
+	Main()
+
 
 
 
