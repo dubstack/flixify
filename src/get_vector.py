@@ -33,7 +33,6 @@ def get_vector(word1):
     return ret
     # return categories[max(enumerate(ret), key=lambda x:x[1])[0]]
 
-init_wn_synsets()
 # print 'kiss', get_vector('kiss')
 # print 'kills', get_vector('kills')
 # print 'crushes', get_vector('crushes')

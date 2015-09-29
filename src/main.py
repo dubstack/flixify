@@ -6,6 +6,7 @@ import get_vector
 def Main():
 	scripttolist=tokenize_narrative.main()
 	categories=6
+	get_vector.init_wn_synsets()
 
 	numberofsubs=0
 	sub={}
@@ -43,11 +44,13 @@ def Main():
 				for l in range(0,categories):
 					score[l]+=temp[l]
 				vectorable+=1
-			except ValueError:
+			except IndexError:
 				nonvectorable+=1
-
+		print vectorable
+		print nonvectorable
 		for l in range(0,categories):
-			matrix[sub[I[1]]][sub[I[2]]][l]=score[l]
+			matrix[sub[I[1]]][sub[I[2]]][l]+=score[l]
+	print matrix[sub["maximus"]][sub["commodus"]]
 
 if __name__ == "__main__":
 	Main()
