@@ -6,8 +6,11 @@ class Myjson(object):
         self.dirname = dirname
 
     def __iter__(self):
-        for fname in os.listdir(self.dirname):
-            with open(os.path.join(self.dirname, fname)) as f:
+        dic = range(10,671, 10) + ["Final"]
+        for num in dic:# in os.listdir(self.dirname):
+            filename = "output/out"+str(num)+".json"
+            # print filename
+            with open(filename) as f:
                 yield json.load(f)
 
 
