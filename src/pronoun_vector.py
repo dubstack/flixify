@@ -4,7 +4,7 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
-
+import dependency_parser
 stop = stopwords.words('english') + ["scene change"]
 tokenizer = RegexpTokenizer(r"\w+")
 
@@ -18,13 +18,11 @@ def getData():
     data = cursor.fetchall()
     return data
 
-
 def get_all_chars(data):
     dic = {}
     for row in data:
         dic[row[1].lower()] = 1
     return dic
-
 
 def get_pronoun_vector(chars, data):
     # data is in the following format
@@ -56,11 +54,24 @@ def get_pronoun_vector(chars, data):
 
     return final_data
 
-
 def main():
     data = getData()
     chars = get_all_chars(data)
 
     pronoun_vector = get_pronoun_vector(chars, data)
-    print(pronoun_vector[0:10])
+    # i=0
+    # for l in pronoun_vector:
+    #     i+=1
+    #     if i > 10:
+    #         break
+    #     print "Trying",l
+    #     print dependency_parser.dependency_parse_relations(l[0],l[1])
+    i=0
+    for l in pronoun_vector:
+        i+=1
+        if i > 10:
+            break
+        print dependency_parser.dependency_parse_profile(l[0],l[1])
     return pronoun_vector
+
+# main()

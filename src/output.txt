@@ -1,11 +1,23 @@
 (ROOT
-  (S
-    (NP (PRP He))
-    (VP (VBD killed)
-      (NP (PRP him)))
-    (. .)))
+  (NP
+    (NP (DT a) (NN horse) (NNS rides))
+    (PP (IN from)
+      (NP (DT the) (NN german) (NN line)))
+    (PP (IN with)
+      (NP (DT a) (JJ headless) (NN horseman)))
+    (PP (IN on)
+      (NP (PRP$ its) (NN back)))
+    (: ...)))
 
-nsubj(killed-2, He-1)
-root(ROOT-0, killed-2)
-dobj(killed-2, him-3)
+det(rides-3, a-1)
+nn(rides-3, horse-2)
+root(ROOT-0, rides-3)
+det(line-7, the-5)
+nn(line-7, german-6)
+prep_from(rides-3, line-7)
+det(horseman-11, a-9)
+amod(horseman-11, headless-10)
+prep_with(rides-3, horseman-11)
+poss(back-14, its-13)
+prep_on(rides-3, back-14)
 
