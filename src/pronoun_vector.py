@@ -26,7 +26,7 @@ def get_all_chars(data):
     return dic
 
 
-def get_tokenized_screenifo(chars, data):
+def get_pronoun_vector(chars, data):
     # data is in the following format
     # List of all sentences.
     # Each sentence is tuple of (char1, char2, list of tokenized words)
@@ -59,11 +59,8 @@ def get_tokenized_screenifo(chars, data):
 
 def main():
     data = getData()
-    
     chars = get_all_chars(data)
 
-    tokenized_screeninfo = get_tokenized_screenifo(chars, data)
-    print(tokenized_screeninfo[0:10])
-    return tokenized_screeninfo
-
-main()
+    pronoun_vector = get_pronoun_vector(chars, data)
+    print(pronoun_vector[0:10])
+    return pronoun_vector
