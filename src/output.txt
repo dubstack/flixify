@@ -1,0 +1,11 @@
+(ROOT
+  (S
+    (NP (PRP He))
+    (VP (VBD killed)
+      (NP (PRP him)))
+    (. .)))
+
+nsubj(killed-2, He-1)
+root(ROOT-0, killed-2)
+dobj(killed-2, him-3)
+
