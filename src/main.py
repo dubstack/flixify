@@ -37,6 +37,9 @@ def Main():
     nonvectorable = 0
     done = 0
     ndone = 0
+    with open("output/scripttolist.json","w+") as f:
+        json.dump(scripttolist,f)
+        print "Saved matrix"
     for I in scripttolist:
         done+=1
         print done,"done"

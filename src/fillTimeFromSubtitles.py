@@ -47,7 +47,7 @@ def find_nearest_time(subtitle_list, dialogue_text):
 
 def fill_dialogues_times():
     # TODO[@9310gaurav] fix the sql syntax according to the update table syntax
-    subtitle_list = get_subtitle_list_from_file("/Users/arkanath/Dropbox/IIT-Kgp_Coursework/NLP/Project/flixify/subtitles/gladiator.srt")
+    subtitle_list = get_subtitle_list_from_file("/Users/arkanath/Dropbox/IIT-Kgp_Coursework/NLP/NLP_Project/flixify/subtitles/gladiator.srt")
     db = mdb.connect(host="10.5.18.68", user="12CS30010", passwd="dual12", db="12CS30010", cursorclass=curs.DictCursor, charset='utf8')
     cur = db.cursor()
     cur.execute('select * from scriptData where typ="dialogue"')

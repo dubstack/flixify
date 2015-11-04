@@ -29,7 +29,7 @@ def get_all_chars(data):
 def get_tokenized_screenifo(chars, data):
     # data is in the following format
     # List of all sentences.
-    # Each sentence is tuple of (char1, char2, list of tokenized words)
+    # Each sentence is tuple of (list of tokenized words, char1, char2)
 
     final_data = []
     last_char1 = ""
