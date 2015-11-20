@@ -9,7 +9,6 @@ def get_subtitle_list_from_file(filename):
     flag = 0
     all = f.read().split("\n")
     for s in all:
-        s = s[:-1]
         if flag == 0:
             flag = 1
         elif flag == 1:
