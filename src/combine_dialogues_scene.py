@@ -1,7 +1,7 @@
 from category_scores import *
 import json
 
-def get_relations_dialogues():
+def  get_relations_dialogues():
 	with open('speaker_speaker_words.json') as data_file:
 		data = json.load(data_file)
 	# print data["commodus"]["maximus"]
@@ -71,6 +71,7 @@ def combine_characters(dic_characters_scenes, dic_characters_dialogues):
 def get_scores(dic):
 	new_dic = {}
 	for key,val in dic.iteritems():
+		print val
 		new_dic[key] = get_results(val)
 	return new_dic  
 
@@ -86,9 +87,10 @@ def main():
 	dic_characters_dialogues = get_characters_dialogues()
 	dic_characters_scenes = get_characters_scenes()
 	dic_characters = combine_characters(dic_characters_scenes, dic_characters_dialogues)
+	print dic_characters
 	dic_characters_scores = get_scores(dic_characters)
 	dic_relations_scores = get_scores(dic_relations)
-	# print dic_characters_scores
+	print dic_characters_scores
 	write_results(dic_characters_scores, dic_relations_scores)
 
 if __name__ == '__main__':

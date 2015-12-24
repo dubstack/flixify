@@ -10,20 +10,35 @@ def get_subtitle_list_from_file(filename):
     all = f.read().split("\n")
     for s in all:
         if flag == 0:
-            flag = 1
-        elif flag == 1:
+            if s == str(i):
+                flag = 1
+            continue
+        if flag == 1:
             x = s.split(',')
             time = x[0]
             flag = 2
-        elif flag == 2:
-            if s != str(i + 1):
-                text = text + " " + s
-            else:
-                i = i + 1
-                val = {}
-                val['time'] = time
-                val['text'] = text
-                result.append(val)
+            continue
+        if flag == 2:
+            if len(s)==0:
+                if len(text)!=0:
+                    val = {}
+                    val['time'] = time
+                    val['text'] = text
+                    result.append(val)
                 text = ""
-                flag = 1
+                flag = 0
+                i = i + 1
+                continue
+
+            if s[0]=='-':
+                if len(text)!=0:
+                    val = {}
+                    val['time'] = time
+                    val['text'] = text
+                    result.append(val)
+                if s[-1]=='.':
+                    s = s[:-1]
+                text = s[2:]
+            else:
+                text = text + " " + s
     return result

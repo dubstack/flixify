@@ -63,8 +63,11 @@ def get_results(words_dic):
 	return dic_result
 
 def main():
-	find_category_scores(words)
-	find_category_scores(dic_categories, mapp, words_list)
+	words = dict()
+	words['good']=1
+	print get_results(words)
+	# find_category_scores(words)
+	# find_category_scores(dic_categories, mapp, words_list)
 
 if __name__ == '__main__':
 	main()
